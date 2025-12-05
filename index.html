@@ -2,329 +2,297 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hon Gisiri Maroa — CIAP Nyabasi West</title>
-  <meta name="description" content="Hon Gisiri Maroa — Community Intelligence & Action Platform (CIAP) for Nyabasi West. Community reporting, youth opportunities, volunteer management, donations, blog and portfolio." />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Hon Gisiri Maroa — CIAP Nyabasi West (Demo)</title>
+  <meta name="description" content="Demo — Community Intelligence & Action Platform (CIAP) for Nyabasi West. Responsive iPhone-style UI with demo content." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--brand:#4b2b7f;--accent:#7c3aed;--muted:#6b7280;--bg:#f7f7fb}
+    :root{
+      --bg:#f2f4f8;
+      --card:#ffffff;
+      --brand:#4b2b7f;
+      --glass: rgba(255,255,255,0.6);
+      --muted:#6b7280;
+      --success:#10b981;
+      --danger:#ef4444;
+      --iPhoneSafeTop: env(safe-area-inset-top, 16px);
+    }
     *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;margin:0;background:var(--bg);color:#111}
-    header{background:linear-gradient(90deg,var(--brand),var(--accent));color:#fff;padding:18px 0}
-    .container{max-width:1100px;margin:0 auto;padding:0 16px}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,var(--bg),#eef0f5);color:#0b1220;-webkit-font-smoothing:antialiased}
+    /* iPhone style container */
+    .device{max-width:420px;margin:18px auto;padding-top:var(--iPhoneSafeTop);border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(10,20,40,0.12), inset 0 1px 0 rgba(255,255,255,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));border:1px solid rgba(11,18,32,0.04)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;backdrop-filter:blur(6px)}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--brand);font-weight:700}
-    nav button{background:transparent;border:0;color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer}
-    nav button:hover{background:rgba(255,255,255,0.06)}
-    main{padding:18px 0}
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
-    .card{background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(12,20,40,0.06);padding:16px}
-    .full{grid-column:1/-1}
-    h1,h2,h3{margin:8px 0}
-    button.primary{background:var(--brand);color:#fff;border:0;padding:10px 14px;border-radius:8px;cursor:pointer}
-    input,textarea,select{width:100%;padding:10px;border:1px solid #e6e9ee;border-radius:8px}
-    footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
-    .small{font-size:13px;color:var(--muted)}
-    .profile-hero{display:flex;gap:16px;align-items:center}
-    .avatar{width:120px;height:120px;border-radius:12px;background:linear-gradient(180deg,#fff,rgba(255,255,255,0.6));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--brand);font-size:20px}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#f1ecff;color:var(--brand);font-weight:600;margin-right:8px}
-    .carousel{position:relative;overflow:hidden;border-radius:10px}
-    .carousel img{width:100%;height:240px;object-fit:cover;display:block}
-    .carousel .controls{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;padding:0 8px}
-    .carousel button{background:rgba(0,0,0,0.35);color:#fff;border:0;padding:8px;border-radius:6px}
-    .nav-links{display:flex;gap:8px}
-    @media(max-width:980px){.grid{grid-template-columns:1fr}.avatar{width:96px;height:96px}}
-    /* modal styles */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:9999}
-    .modal-box{width:720px;max-width:96%;}
+    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(180deg,var(--card),#fff);display:flex;align-items:center;justify-content:center;color:var(--brand);font-weight:800;box-shadow:0 6px 18px rgba(75,43,127,0.08)}
+    .title{font-weight:700}
+    .subtitle{font-size:12px;color:var(--muted)}
+
+    /* Navbar / hamburger */
+    .nav-toggle{display:flex;align-items:center;gap:8px}
+    .burger{width:44px;height:44px;border-radius:10px;background:var(--card);display:flex;align-items:center;justify-content:center;border:1px solid rgba(11,18,32,0.04);cursor:pointer}
+    .burger .lines{width:18px;height:2px;background:#111;border-radius:2px;position:relative}
+    .burger .lines::before,.burger .lines::after{content:'';position:absolute;left:0;right:0;height:2px;background:#111;border-radius:2px}
+    .burger .lines::before{top:-6px}
+    .burger .lines::after{top:6px}
+
+    .nav-panel{position:relative}
+    .nav-menu{position:absolute;right:16px;top:64px;background:linear-gradient(180deg,var(--card),#fff);border-radius:14px;padding:8px;width:260px;box-shadow:0 20px 40px rgba(11,18,32,0.12);transform-origin:top right;opacity:0;pointer-events:none;transform:scale(.98) translateY(-6px);transition:all .22s cubic-bezier(.2,.9,.3,1)}
+    .nav-menu.show{opacity:1;pointer-events:auto;transform:scale(1) translateY(0)}
+    .nav-menu button{display:block;width:100%;text-align:left;padding:10px;border-radius:10px;border:0;background:transparent;cursor:pointer}
+    .nav-menu button:hover{background:#f5f7fb}
+
+    main{padding:16px}
+    .stack{display:flex;flex-direction:column;gap:12px}
+    .card{background:var(--card);border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(11,18,32,0.06);border:1px solid rgba(11,18,32,0.03)}
+    .hero{display:flex;gap:12px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:18px;background:linear-gradient(180deg,#fff,rgba(255,255,255,0.6));display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);font-size:24px}
+
+    h2{margin:0 0 6px 0}
+    p.small{margin:0;color:var(--muted);font-size:13px}
+
+    /* gallery */
+    .carousel{height:160px;border-radius:10px;overflow:hidden;position:relative}
+    .carousel img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .85s cubic-bezier(.2,.9,.3,1)}
+    .carousel .dots{position:absolute;left:10px;bottom:10px;display:flex;gap:8px}
+    .dot{width:8px;height:8px;border-radius:8px;background:rgba(0,0,0,0.25)}
+    .dot.active{width:28px;border-radius:8px;background:linear-gradient(90deg,var(--brand),var(--accent));box-shadow:0 6px 18px rgba(75,43,127,0.12)}
+
+    /* lists */
+    .list-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f2f4f8}
+    .badge{padding:6px 8px;border-radius:999px;background:#f1f5f9;font-weight:700;font-size:12px}
+
+    /* responsive tweaks */
+    @media (min-width:600px){.device{max-width:720px;border-radius:20px}}
+
+    /* animations */
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .float{animation:floaty 5s ease-in-out infinite}
+
+    .btn-row{display:flex;gap:8px}
+    .btn{padding:10px 12px;border-radius:10px;border:0;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
+    .ghost{background:transparent;border:1px solid rgba(11,18,32,0.06);color:#0b1220}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:flex;align-items:center;justify-content:center;z-index:9999}
+    .modal{width:640px;max-width:94%;border-radius:12px;overflow:hidden}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid #eef2f7}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container topbar">
+  <div class="device" role="application" aria-label="CIAP Demo">
+    <header>
       <div class="brand">
         <div class="logo">GM</div>
         <div>
-          <div style="font-weight:700">Hon Gisiri Maroa</div>
-          <div class="small">Aspiring MCA — Nyabasi West • Kuria East • Migori</div>
+          <div class="title">Hon Gisiri Maroa</div>
+          <div class="subtitle">Aspiring MCA — Nyabasi West</div>
         </div>
       </div>
-      <nav class="nav-links">
-        <button data-route="home">Home</button>
-        <button data-route="reports">Report</button>
-        <button data-route="opps">Opportunities</button>
-        <button data-route="volunteer">Volunteer</button>
-        <button data-route="donate">Donate</button>
-        <button data-route="blog">Blog</button>
-        <button data-route="portfolio">Portfolio</button>
-        <button data-route="admin">Admin</button>
-      </nav>
-    </div>
-  </header>
+      <div class="nav-panel">
+        <div class="nav-toggle">
+          <div class="burger" id="burger" aria-label="Toggle menu" role="button" tabindex="0">
+            <div class="lines"></div>
+          </div>
+        </div>
+        <div class="nav-menu" id="navMenu" aria-hidden="true">
+          <button data-route="home">Home</button>
+          <button data-route="reports">Report</button>
+          <button data-route="opps">Opportunities</button>
+          <button data-route="volunteer">Volunteer</button>
+          <button data-route="donate">Donate</button>
+          <button data-route="blog">Blog</button>
+          <button data-route="portfolio">Portfolio</button>
+          <button data-route="admin">Admin</button>
+        </div>
+      </div>
+    </header>
 
-  <main class="container">
-    <div id="app-root"></div>
-  </main>
+    <main id="mainRoot"></main>
 
-  <footer>
-    © Hon Gisiri Maroa — CIAP Nyabasi West • Built for community impact • Privacy-first • 2025
-  </footer>
+    <footer style="padding:12px 16px;text-align:center;color:var(--muted);font-size:13px">© Hon Gisiri Maroa • CIAP Demo</footer>
+  </div>
 
   <script>
   (function(){
+    // Simple SPA with demo data if Firebase not configured
+    const root = document.getElementById('mainRoot');
+    const navMenu = document.getElementById('navMenu');
+    const burger = document.getElementById('burger');
+    burger.addEventListener('click', ()=>{navMenu.classList.toggle('show'); navMenu.setAttribute('aria-hidden', String(!navMenu.classList.contains('show')))});
+
+    document.addEventListener('click', (e)=>{ if(!navMenu.contains(e.target) && !burger.contains(e.target)) { navMenu.classList.remove('show'); navMenu.setAttribute('aria-hidden','true') } });
+    document.querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click', (e)=>{ e.preventDefault(); navigate(b.dataset.route); navMenu.classList.remove('show'); navMenu.setAttribute('aria-hidden','true') }));
+
+    function createEl(tag, props={}, children=[]) { const el = document.createElement(tag); Object.assign(el, props); (children||[]).forEach(c => typeof c === 'string' ? el.appendChild(document.createTextNode(c)) : el.appendChild(c)); return el }
+
+    // Demo data
+    const DEMO_POSTS = [
+      {id:'p1',title:'Youth Agritech Grants',excerpt:'How small agritech grants are helping farmers increase yields.',content:'We piloted...'},
+      {id:'p2',title:'Community Borehole Success',excerpt:'How the community mobilized to fix Nyabasi boreholes.',content:'Case study...'},
+      {id:'p3',title:'Transparency Brief — Market Funds',excerpt:'A short audit of market fees and spending.',content:'Audit summary...'}
+    ];
+    const DEMO_REPORTS = [
+      {id:'r1',title:'Broken Borehole at Nyabasi Center',category:'Water',location:'Nyabasi Center',desc:'Pump broken for 3 weeks',status:'published'},
+      {id:'r2',title:'Impassable Road to Market',category:'Roads',location:'Makwesa',desc:'Damaged bridge after rains',status:'open'}
+    ];
+    const DEMO_OPPS = [
+      {id:'o1',title:'Livestock Vaccination Drive',summary:'Free vaccines for small-scale farmers this Friday.'},
+      {id:'o2',title:'Youth Coding Bootcamp',summary:'2-week training in mobile app dev — apply by Monday.'}
+    ];
+    const DEMO_VOL = [ {uid:'v1',name:'Alice'}, {uid:'v2',name:'Brian'} ];
+    const DEMO_DON = [ {amount:5000,uid:'v1',status:'intent'}, {amount:2000,uid:null,status:'completed'} ];
+
+    // Simple router
     const routes = {};
-    const root = document.getElementById('app-root');
-    function register(path,fn){routes[path]=fn}
-    async function navigate(path){
-      window.history.pushState({},'',`#${path}`);
-      root.innerHTML='';
-      if(typeof routes[path] === 'function') await routes[path]();
-      else console.warn('Route not found:',path);
-    }
-    document.querySelectorAll('nav button').forEach(b=>{b.addEventListener('click',()=>navigate(b.dataset.route))});
-    window.addEventListener('popstate',()=>{const p=location.hash.replace('#','')||'home';navigate(p)});
+    function register(path,fn){ routes[path]=fn }
+    async function navigate(path){ window.location.hash = path; root.innerHTML = ''; if(routes[path]) await routes[path](); else root.appendChild(createEl('div',{},['Page not found'])); }
 
-    const createEl = (tag,props={},children=[])=>{const e=document.createElement(tag);Object.assign(e,props);children.forEach(c=>typeof c==='string'?e.appendChild(document.createTextNode(c)):e.appendChild(c));return e}
-
-    let firebaseApp,auth,db,storage;
-    async function initFirebase(){
-      if(window.firebaseApp) return;
-      const s=document.createElement('script'); s.src='https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js'; s.defer=true; document.head.appendChild(s);
-      const s2=document.createElement('script'); s2.src='https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js'; s2.defer=true; document.head.appendChild(s2);
-      const s3=document.createElement('script'); s3.src='https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js'; s3.defer=true; document.head.appendChild(s3);
-      const s4=document.createElement('script'); s4.src='https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js'; s4.defer=true; document.head.appendChild(s4);
-      await new Promise(r=>{s.onload=r});
-      const cfg = {
-        apiKey: "REPLACE_YOUR_FIREBASE_APIKEY",
-        authDomain: "REPLACE.firebaseapp.com",
-        projectId: "REPLACE_PROJECT_ID",
-        storageBucket: "REPLACE.appspot.com",
-        messagingSenderId: "REPLACE",
-        appId: "REPLACE"
-      };
-      firebase.initializeApp(cfg);
-      firebaseApp = firebase.app(); auth = firebase.auth(); db = firebase.firestore(); storage = firebase.storage();
-      window.firebaseApp = firebaseApp; window.db = db; window.auth = auth; window.storage = storage;
-    }
-
-    // --------------- HOME ---------------
+    // Home
     register('home', async ()=>{
-      await initFirebase();
-      const container = createEl('div',{className:'grid'});
-      const left = createEl('div', {className:'card'});
-      const right = createEl('div', {className:'card'});
+      const stack = createEl('div',{className:'stack'});
+      const hero = createEl('div',{className:'card hero'});
+      const left = createEl('div',{style:'display:flex;gap:12px;align-items:center'});
+      left.appendChild(createEl('div',{className:'avatar float'},['GM']));
+      const info = createEl('div'); info.appendChild(createEl('div',{className:'title'},['Hon Gisiri Maroa'])); info.appendChild(createEl('div',{className:'muted'},['Aspiring MCA — Nyabasi West'])); info.appendChild(createEl('p',{className:'small'},['Youth empowerment • Agriculture • Accountability • Functional services']));
+      hero.appendChild(left); hero.appendChild(info);
+      stack.appendChild(hero);
 
-      const hero = createEl('div',{className:'profile-hero'});
-      const avatar = createEl('div',{className:'avatar'},[createEl('div',{},['GM'])]);
-      const info = createEl('div');
-      info.appendChild(createEl('div',{className:'pill'},['For the Youth']));
-      info.appendChild(createEl('h1',{},['Hon Gisiri Maroa']));
-      info.appendChild(createEl('div',{className:'small'},['Aspiring MCA — Nyabasi West • Kuria East • Migori County']));
-      info.appendChild(createEl('p',{},['I am Hon Gisiri Maroa — a leader focused on youth empowerment, fairness, agriculture, accountable governance and ending political deceit. My mission is to build a transparent, data-driven approach to community problem-solving and ensure public resources benefit every Nyabasi West resident.']));
-      hero.appendChild(avatar); hero.appendChild(info);
-      left.appendChild(hero);
+      // quick action cards
+      const actions = createEl('div',{className:'grid-2'});
+      actions.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Report Problem']), createEl('p',{className:'small'},['Submit a community issue.']), createEl('div',{className:'btn-row',style:'margin-top:8px'},[createEl('button',{className:'btn',onclick:()=>navigate('reports')},['Report']), createEl('button',{className:'btn ghost',onclick:()=>navigate('opps')},['Opportunities'])]) ]));
+      actions.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Support Projects']), createEl('p',{className:'small'},['Donate to visible village projects and see ledger.']), createEl('div',{className:'btn-row',style:'margin-top:8px'},[createEl('button',{className:'btn',onclick:()=>navigate('donate')},['Donate']), createEl('button',{className:'btn ghost',onclick:()=>navigate('volunteer')},['Volunteer'])]) ]));
+      stack.appendChild(actions);
 
-      left.appendChild(createEl('hr')); left.appendChild(createEl('h3',{},['Campaign Priorities']));
-      const ul = createEl('ul'); ['Youth Empowerment','Agriculture & Market Access','Transparent Public Spending','Functional Local Services','Women & Smallholder Support'].forEach(i=>ul.appendChild(createEl('li',{},[i])));
-      left.appendChild(ul);
-
-      left.appendChild(createEl('h3',{},['Latest Thoughts from Hon Gisiri']));
-      const blogPreview = createEl('div',{id:'blog-preview',className:'small'},['Loading...']);
-      left.appendChild(blogPreview);
-
+      // Gallery carousel
+      const galCard = createEl('div',{className:'card'});
+      galCard.appendChild(createEl('h2',{},['Gallery']));
       const carousel = createEl('div',{className:'carousel'});
-      const img = createEl('img',{src:'https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1200&q=60',alt:'Gisiri in community'});
-      carousel.appendChild(img);
-      const controls = createEl('div',{className:'controls'});
-      const prev = createEl('button',{},['◀']); const next = createEl('button',{},['▶']);
-      controls.appendChild(prev); controls.appendChild(next); carousel.appendChild(controls);
-      right.appendChild(carousel);
-      right.appendChild(createEl('h3',{},['Campaign Calls to Action']));
-      right.appendChild(createEl('div',{},[createEl('button',{className:'primary',onclick:()=>navigate('donate')},['Support a Village Project'])]));
-      right.appendChild(createEl('div',{style:'margin-top:8px'},[createEl('button',{onclick:()=>navigate('volunteer')},['Join Volunteer Team'])]));
+      const gimg = createEl('img',{src:DEMO_POSTS[0] && 'https://images.unsplash.com/photo-1505765052875-6c0a0a9e07b5?auto=format&fit=crop&w=1200&q=60'});
+      carousel.appendChild(gimg);
+      const dots = createEl('div',{className:'dots'});
+      DEMO_POSTS.forEach((p,i)=>{ const d = createEl('div',{className:'dot'+(i===0?' active':''),onclick:()=>{ gimg.src = ['https://images.unsplash.com/photo-1505765052875-6c0a0a9e07b5?auto=format&fit=crop&w=1200&q=60','https://images.unsplash.com/photo-1520975919516-6f9cf2e2d9b0?auto=format&fit=crop&w=1200&q=60','https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=60'][i]; dots.querySelectorAll('.dot').forEach(x=>x.classList.remove('active')); d.classList.add('active') } }); dots.appendChild(d) });
+      carousel.appendChild(dots); galCard.appendChild(carousel); stack.appendChild(galCard);
 
-      container.appendChild(left); container.appendChild(right); root.appendChild(container);
+      // Latest posts
+      const postsCard = createEl('div',{className:'card'});
+      postsCard.appendChild(createEl('h2',{},['Latest from the Blog']));
+      DEMO_POSTS.forEach(p=>{ postsCard.appendChild(createEl('div',{className:'list-item'},[ createEl('div',{},[createEl('strong',{},[p.title]), createEl('div',{className:'muted'},[p.excerpt]) ]), createEl('div',{},[createEl('button',{className:'btn ghost',onclick:()=>navigate('blog')},['Read'])]) ])) });
+      stack.appendChild(postsCard);
 
-      const images = [
-        'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=60',
-        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=60',
-        'https://images.unsplash.com/photo-1520975698518-1b6d7c1f0a06?auto=format&fit=crop&w=1200&q=60'
-      ];
-      let idx=0; prev.onclick=()=>{idx=(idx-1+images.length)%images.length; img.src=images[idx]}; next.onclick=()=>{idx=(idx+1)%images.length; img.src=images[idx]};
-
-      try{
-        const snap = await db.collection('posts').where('ward','==','Nyabasi West').orderBy('createdAt','desc').limit(3).get();
-        const arr=[]; snap.forEach(d=>arr.push(Object.assign({id:d.id},d.data())));
-        if(arr.length===0) blogPreview.innerText='No posts yet. Use the Blog page to add articles and policy briefs.'; else{
-          blogPreview.innerHTML=''; arr.forEach(p=>{const t=createEl('div',{},[createEl('strong',{},[p.title||'Untitled']),createEl('div',{className:'small'},[(p.excerpt||p.content||'').slice(0,200)])]); blogPreview.appendChild(t)})
-        }
-      }catch(e){blogPreview.innerText='(Error loading blog preview)'}
+      root.appendChild(stack);
     });
 
-    // --------------- REPORTS ---------------
+    // Reports page
     register('reports', async ()=>{
-      await initFirebase();
-      const page = createEl('div');
-      const card = createEl('div',{className:'card'});
-      card.appendChild(createEl('h2',{},['Report an issue']));
-      const form = createEl('form',{id:'report-form'});
-      form.innerHTML = "
-        <label>Title</label><input id='r-title' required />
-        <label>Category</label><select id='r-category'><option>Water</option><option>Roads</option><option>Education</option><option>Health</option><option>Agriculture</option><option>Security</option><option>Other</option></select>
-        <label>Description</label><textarea id='r-desc' rows='5' maxlength='1000'></textarea>
-        <label>Location (village/area)</label><input id='r-location' />
-        <label>Attach Photo</label><input id='r-photo' type='file' accept='image/*' />
-        <div style='margin-top:12px'><button class='primary' type='submit'>Submit Report</button></div>
-      ";
-      card.appendChild(form);
-      page.appendChild(card);
+      const page = createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Report an Issue']), createEl('p',{className:'muted'},['Your identity is kept private unless you opt-in.'])]));
 
-      const listCard = createEl('div',{className:'card'});
-      listCard.appendChild(createEl('h3',{},['Recent Published Reports']));
-      const list = createEl('div',{id:'reports-list',className:'small'},['Loading...']); listCard.appendChild(list);
+      const formCard = createEl('div',{className:'card'});
+      const form = createEl('form');
+      form.innerHTML = "<label>Title</label><input id='r-title' placeholder='e.g. Broken borehole' required /><label>Category</label><select id='r-category'><option>Water</option><option>Roads</option><option>Education</option><option>Agriculture</option><option>Security</option><option>Other</option></select><label>Description</label><textarea id='r-desc' rows='4' placeholder='Describe the issue'></textarea><label>Location</label><input id='r-location' placeholder='e.g. Nyabasi center' /><div style='margin-top:10px'><button class='btn' type='submit'>Submit</button> <button class='btn ghost' type='button' id='cancelReport'>Cancel</button></div>";
+      formCard.appendChild(form); page.appendChild(formCard);
+
+      const listCard = createEl('div',{className:'card'}); listCard.appendChild(createEl('h2',{},['Recent Reports']));
+      DEMO_REPORTS.forEach(r=>{ listCard.appendChild(createEl('div',{className:'list-item'},[ createEl('div',{},[createEl('strong',{},[r.title]), createEl('div',{className:'muted'},[r.category+' • '+r.location])]), createEl('div',{},[createEl('div',{className:'badge'},[r.status==='published'?'Published':'Open'])]) ])) });
       page.appendChild(listCard);
+
       root.appendChild(page);
 
-      form.addEventListener('submit',async e=>{
-        e.preventDefault();
-        const user = auth.currentUser;
-        if(!user){alert('Please sign in to submit reports.'); return}
-        const title=document.getElementById('r-title').value.trim();
-        const category=document.getElementById('r-category').value; const desc=document.getElementById('r-desc').value.trim();
-        const location=document.getElementById('r-location').value.trim(); const file=document.getElementById('r-photo').files[0];
-        const docRef = db.collection('reports').doc();
-        const payload={title,category,desc,location,author:user.uid,ward:'Nyabasi West',status:'pending',createdAt:firebase.firestore.FieldValue.serverTimestamp()};
-        if(file){const path=`reports/${docRef.id}/${Date.now()}_${file.name}`; const snap=await storage.ref(path).put(file); payload.photo=await snap.ref.getDownloadURL();}
-        await docRef.set(payload);
-        alert('Report submitted — awaiting moderation.'); form.reset();
-      });
-
-      const snap = await db.collection('reports').where('ward','==','Nyabasi West').where('status','==','published').orderBy('createdAt','desc').limit(20).get();
-      list.innerHTML=''; if(snap.empty) list.innerText='No published reports yet.'; else snap.forEach(d=>{const o=d.data(); const el=createEl('div'); el.innerHTML=`<strong>${o.title}</strong><div class='small'>${o.category} • ${o.location||''}</div><div>${(o.desc||'').slice(0,250)}</div>`; list.appendChild(el)});
+      form.addEventListener('submit', (e)=>{ e.preventDefault(); alert('Report submitted (demo). In production this will save to Firestore.'); form.reset(); navigate('home'); });
+      document.getElementById('cancelReport').addEventListener('click', ()=>{ navigate('home') });
     });
 
-    // --------------- OPPORTUNITIES ---------------
-    register('opps', async ()=>{ await initFirebase(); const page = createEl('div'); const card = createEl('div',{className:'card'}); card.appendChild(createEl('h2',{},['Opportunities & Alerts'])); const list = createEl('div',{id:'opps-list',className:'small'},['Loading...']); card.appendChild(list); page.appendChild(card); root.appendChild(page);
-      const snap = await db.collection('opportunities').where('ward','==','Nyabasi West').orderBy('createdAt','desc').limit(20).get(); list.innerHTML=''; if(snap.empty) list.innerText='No opportunities yet.'; else snap.forEach(d=>{const o=d.data(); const el=createEl('div'); el.innerHTML=`<strong>${o.title}</strong><div class='small'>${o.summary||''}</div>`; list.appendChild(el)});
+    // Opportunities
+    register('opps', async ()=>{
+      const page=createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Opportunities & Alerts']), createEl('p',{className:'muted'},['Grants, bursaries, trainings and community events.'])]));
+      DEMO_OPPS.forEach(o=>{ page.appendChild(createEl('div',{className:'card'},[ createEl('h3',{},[o.title]), createEl('p',{className:'small'},[o.summary]), createEl('div',{style:'margin-top:8px'},[createEl('button',{className:'btn',onclick:()=>alert('Applied (demo)')},['Apply'])]) ])) });
+      root.appendChild(page);
     });
 
-    // --------------- VOLUNTEER ---------------
-    register('volunteer', async ()=>{ await initFirebase(); const page=createEl('div'); const card=createEl('div',{className:'card'}); card.appendChild(createEl('h2',{},['Volunteer & Community Team'])); card.appendChild(createEl('p',{},['Join the on-ground team — help run youth programs, field verifications and mobilizations.'])); const join=createEl('button',{className:'primary'},['Join Volunteer Team']); join.onclick=async ()=>{const u=auth.currentUser; if(!u){alert('Sign in first'); return} await db.collection('volunteers').doc(u.uid).set({uid:u.uid,joinedAt:firebase.firestore.FieldValue.serverTimestamp(),ward:'Nyabasi West'}); alert('You are now on the volunteer roster. Thank you.');}; card.appendChild(join); page.appendChild(card); root.appendChild(page);
+    // Volunteers
+    register('volunteer', async ()=>{
+      const page=createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Volunteer Team']), createEl('p',{className:'muted'},['Join the on-ground team to support verifications and events.'])]));
+      const roster = createEl('div',{className:'card'}); roster.appendChild(createEl('h3',{},['Roster'])); DEMO_VOL.forEach(v=>roster.appendChild(createEl('div',{className:'list-item'},[createEl('div',{},[createEl('strong',{},[v.name||v.uid])]), createEl('div',{},[createEl('button',{className:'btn ghost',onclick:()=>alert('Contact (demo)')},['Contact'])])]));
+      roster.appendChild(createEl('div',{style:'margin-top:8px'},[createEl('button',{className:'btn',onclick:()=>{alert('Joined demo roster');}},['Join Now'])]));
+      page.appendChild(roster); root.appendChild(page);
     });
 
-    // --------------- DONATE ---------------
-    register('donate', async ()=>{ await initFirebase(); const page = createEl('div'); const card = createEl('div',{className:'card'}); card.appendChild(createEl('h2',{},['Support a Village Project'])); card.appendChild(createEl('p',{className:'small'},['Transparent micro-project funding. Use M-Pesa or Card (Stripe). Donor privacy respected.']));
-      card.innerHTML += "
-        <label>Amount (Ksh)</label><input id='don-amount' />
-        <label>Your Phone (for M-Pesa)</label><input id='don-phone' placeholder='2547XXXXXXXX' />
-        <div style='margin-top:12px'><button id='mpesa-btn' class='primary'>Donate via M-Pesa STK</button> <button id='card-btn'>Donate via Card (Stripe)</button></div>
-        <div id='don-status' class='small' style='margin-top:8px'></div>
-      "; page.appendChild(card); root.appendChild(page);
+    // Donate
+    register('donate', async ()=>{
+      const page=createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Support a Project']), createEl('p',{className:'muted'},['Transparent micro-project funding for village services.'])]));
+      const form = createEl('div',{className:'card'});
+      form.innerHTML = "<label>Amount (Ksh)</label><input id='don-amt' placeholder='e.g. 500' /><label>Phone (for M-Pesa)</label><input id='don-phone' placeholder='2547xxxxxxxx' /><div style='margin-top:10px'><button class='btn' id='mpesaDemo'>Donate (M-Pesa demo)</button> <button class='btn ghost' id='cardDemo'>Donate (Card demo)</button></div>";
+      page.appendChild(form);
+      const ledger = createEl('div',{className:'card'}); ledger.appendChild(createEl('h3',{},['Recent Donations'])); DEMO_DON.forEach(d=>ledger.appendChild(createEl('div',{className:'list-item'},[createEl('div',{},['Ksh '+d.amount+' • '+(d.uid||'anonymous')]), createEl('div',{},[createEl('div',{className:'badge'},[d.status])])])));
+      page.appendChild(ledger); root.appendChild(page);
 
-      document.getElementById('mpesa-btn').onclick=async ()=>{
-        const amt = Number(document.getElementById('don-amount').value||0); const phone = document.getElementById('don-phone').value.trim(); if(!amt||!phone){alert('Enter amount and phone');return}
-        document.getElementById('don-status').innerText='Requesting STK...';
-        try{
-          const res = await fetch('/api/mpesa/stk', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount:amt,phone})});
-          const j = await res.json(); document.getElementById('don-status').innerText = j.message || 'STK request sent';
-        }catch(e){document.getElementById('don-status').innerText='Error initiating STK: '+e.message}
-      };
-
-      document.getElementById('card-btn').onclick=async ()=>{
-        const amt = Number(document.getElementById('don-amount').value||0); if(!amt){alert('Enter amount');return}
-        try{
-          const resp = await fetch('/api/stripe/session',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount:amt})});
-          const j = await resp.json(); if(j.sessionUrl) window.location.href = j.sessionUrl; else alert('Stripe session error');
-        }catch(e){alert('Stripe error: '+e.message)}
-      };
+      document.getElementById('mpesaDemo').addEventListener('click', ()=>{ alert('M-Pesa STK demo started (sandbox). In production this triggers backend STK.') });
+      document.getElementById('cardDemo').addEventListener('click', ()=>{ alert('Stripe demo started (sandbox).') });
     });
 
-    // --------------- BLOG (CRUD) ---------------
-    register('blog', async ()=>{ await initFirebase(); const page=createEl('div'); const card=createEl('div',{className:'card'}); card.appendChild(createEl('h2',{},['Gisiri’s Blog & Policy Briefs']));
-      const newBtn=createEl('button',{className:'primary'},['New Post']); newBtn.onclick=()=>{showEditor()}; card.appendChild(newBtn);
-      card.appendChild(createEl('div',{id:'posts-list',className:'small'},['Loading posts...'])); page.appendChild(card); root.appendChild(page);
+    // Blog
+    register('blog', async ()=>{
+      const page = createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Gisiri\'s Blog & Policy Briefs']), createEl('p',{className:'muted'},['Official statements, policy briefs and weekly updates.'])]));
+      DEMO_POSTS.forEach(p=>{ page.appendChild(createEl('div',{className:'card'},[createEl('h3',{},[p.title]), createEl('p',{className:'small'},[p.excerpt]), createEl('div',{style:'margin-top:8px'},[createEl('button',{className:'btn',onclick:()=>alert(p.content)},['Read'])]) ])) });
+      page.appendChild(createEl('div',{className:'card'},[createEl('h3',{},['New Post (demo editor)']), createEl('button',{className:'btn',onclick:showEditor},['Create New'])]));
+      root.appendChild(page);
 
-      // safer editor rendering to avoid broken quotes
-      async function showEditor(post){
-        const modal = createEl('div',{className:'modal-backdrop'});
-        const box = createEl('div',{className:'modal-box card'});
-        const titleEl = createEl('h3',{},[post? 'Edit Post':'New Post']);
-        const titleInput = createEl('input',{id:'post-title',placeholder:'Title'});
-        const excerptInput = createEl('input',{id:'post-excerpt',placeholder:'Short excerpt (optional)'});
-        const contentInput = createEl('textarea',{id:'post-content',rows:10,placeholder:'Write content here (markdown allowed)'});
-        const saveBtn = createEl('button',{id:'save-post',className:'primary'},['Save']);
-        const cancelBtn = createEl('button',{id:'cancel-post',style:'margin-left:8px'},['Cancel']);
-        box.appendChild(titleEl); box.appendChild(createEl('label',{},['Title'])); box.appendChild(titleInput);
-        box.appendChild(createEl('label',{},['Excerpt'])); box.appendChild(excerptInput);
-        box.appendChild(createEl('label',{},['Content (Markdown allowed)'])); box.appendChild(contentInput);
-        const btnRow = createEl('div',{style:'margin-top:8px'}); btnRow.appendChild(saveBtn); btnRow.appendChild(cancelBtn); box.appendChild(btnRow);
-        modal.appendChild(box); document.body.appendChild(modal);
-        if(post){ titleInput.value = post.title || ''; excerptInput.value = post.excerpt || ''; contentInput.value = post.content || ''; }
-        cancelBtn.onclick = ()=>modal.remove();
-        saveBtn.onclick = async ()=>{
-          const title = titleInput.value.trim(); const excerpt = excerptInput.value.trim(); const content = contentInput.value.trim(); const user = auth.currentUser; if(!user){alert('Sign in to publish'); return}
-          if(!title || !content){alert('Title and content required'); return}
-          if(post){ await db.collection('posts').doc(post.id).update({title,excerpt,content,updatedAt:firebase.firestore.FieldValue.serverTimestamp()}); }
-          else{ await db.collection('posts').add({title,excerpt,content,author:user.uid,ward:'Nyabasi West',createdAt:firebase.firestore.FieldValue.serverTimestamp()}); }
-          modal.remove(); loadPosts();
-        };
+      function showEditor(){
+        const backdrop = createEl('div',{className:'modal-backdrop'});
+        const modal = createEl('div',{className:'modal card'});
+        modal.innerHTML = "<div style='padding:14px'><h3>New Post</h3><label>Title</label><input id='p-title' /><label>Excerpt</label><input id='p-excerpt' /><label>Content</label><textarea id='p-content' rows='8'></textarea><div style='margin-top:8px'><button id='savePost' class='btn'>Save</button> <button id='closePost' class='btn ghost'>Cancel</button></div></div>";
+        backdrop.appendChild(modal); document.body.appendChild(backdrop);
+        backdrop.querySelector('#closePost').addEventListener('click', ()=>backdrop.remove());
+        backdrop.querySelector('#savePost').addEventListener('click', ()=>{ alert('Post saved (demo).'); backdrop.remove(); });
       }
-
-      async function loadPosts(){ const listEl=document.getElementById('posts-list'); const snap=await db.collection('posts').where('ward','==','Nyabasi West').orderBy('createdAt','desc').limit(20).get(); listEl.innerHTML=''; if(snap.empty) listEl.innerText='No posts yet.'; else snap.forEach(d=>{const o=d.data(); const el=createEl('div'); el.innerHTML=`<strong>${o.title}</strong><div class='small'>${o.excerpt||''}</div><div style='margin-top:6px'><button class='small' data-id='${d.id}'>Read</button> <button class='small' data-edit='${d.id}'>Edit</button></div>`; listEl.appendChild(el)});
-        listEl.querySelectorAll('button[data-id]').forEach(b=>b.onclick=async ()=>{ const doc=await db.collection('posts').doc(b.dataset.id).get(); const data=doc.data(); alert((data.content||'').slice(0,200)) });
-        listEl.querySelectorAll('button[data-edit]').forEach(b=>b.onclick=async ()=>{ const doc=await db.collection('posts').doc(b.dataset.edit).get(); showEditor(Object.assign({id:doc.id},doc.data())); });
-      }
-      loadPosts();
     });
 
-    // --------------- PORTFOLIO ---------------
-    register('portfolio', async ()=>{ await initFirebase(); const page=createEl('div'); const card=createEl('div',{className:'card full'});
-      card.appendChild(createEl('h2',{},['Hon Gisiri Maroa — Portfolio']));
-      card.appendChild(createEl('p',{},['Community leader focused on youth, agriculture, transparency and accountable governance. Below are highlights, endorsements, project evidence and media.']));
-      const gallery = createEl('div',{className:'card'});
-      gallery.appendChild(createEl('h3',{},['Gallery & Events']));
-      const car = createEl('div',{className:'carousel'}); const gimg=createEl('img',{src:'https://images.unsplash.com/photo-1516912482261-3f0f9f6a9f80?auto=format&fit=crop&w=1200&q=60'}); car.appendChild(gimg);
-      const ctrls = createEl('div',{className:'controls'}); const gp= createEl('button',{},['◀']); const gn=createEl('button',{},['▶']); ctrls.appendChild(gp); ctrls.appendChild(gn); car.appendChild(ctrls); gallery.appendChild(car);
-      gallery.appendChild(createEl('div',{className:'small'},['Images: community outreach, market visits, youth workshops.']));
-      page.appendChild(card); page.appendChild(gallery); root.appendChild(page);
-      const imgs = [
-        'https://images.unsplash.com/photo-1520975919516-6f9cf2e2d9b0?auto=format&fit=crop&w=1200&q=60',
-        'https://images.unsplash.com/photo-1505765052875-6c0a0a9e07b5?auto=format&fit=crop&w=1200&q=60',
-        'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=60'
-      ]; let gi=0; gp.onclick=()=>{gi=(gi-1+imgs.length)%imgs.length; gimg.src=imgs[gi]}; gn.onclick=()=>{gi=(gi+1)%imgs.length; gimg.src=imgs[gi]};
+    // Portfolio
+    register('portfolio', async ()=>{
+      const page=createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Hon Gisiri Maroa — Portfolio']), createEl('p',{className:'muted'},['Selected highlights, endorsements and media.'])]));
+      const gallery = createEl('div',{className:'card'}); gallery.appendChild(createEl('h3',{},['Impact Gallery'])); const grid = createEl('div',{style:'display:grid;grid-template-columns:1fr 1fr;gap:8px'});
+      ['https://images.unsplash.com/photo-1505765052875-6c0a0a9e07b5?auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1520975919516-6f9cf2e2d9b0?auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=800&q=60','https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=60'].forEach(src=>{ const img=createEl('img',{src,style:'width:100%;height:120px;object-fit:cover;border-radius:8px'}); grid.appendChild(img) }); gallery.appendChild(grid); page.appendChild(gallery);
+      page.appendChild(createEl('div',{className:'card'},[createEl('h3',{},['Endorsements']), createEl('p',{className:'small'},['Selected community and church leaders have publicly supported the vision — contact for references.'])]));
+      root.appendChild(page);
     });
 
-    // --------------- ADMIN ---------------
-    register('admin', async ()=>{ await initFirebase(); const page=createEl('div'); const card=createEl('div',{className:'card'}); card.appendChild(createEl('h2',{},['Admin Dashboard']));
-      card.appendChild(createEl('p',{className:'small'},['Moderate reports, publish updates, manage volunteers, view donations and export CSV. Admins only.']));
-      card.appendChild(createEl('div',{id:'admin-controls'})); page.appendChild(card); root.appendChild(page);
+    // Admin (demo)
+    register('admin', async ()=>{
+      const page=createEl('div',{className:'stack'});
+      page.appendChild(createEl('div',{className:'card'},[createEl('h2',{},['Admin Dashboard (Demo)']), createEl('p',{className:'muted'},['This demo shows moderation flows. In production, only admin users can access this.'])]));
+      const pending = createEl('div',{className:'card'}); pending.appendChild(createEl('h3',{},['Pending Reports'])); DEMO_REPORTS.filter(r=>r.status!=='published').forEach(r=>{ pending.appendChild(createEl('div',{className:'list-item'},[ createEl('div',{},[createEl('strong',{},[r.title]), createEl('div',{className:'muted'},[r.category+' • '+r.location])]), createEl('div',{},[createEl('button',{className:'btn',onclick:()=>{ alert('Published (demo)'); }},['Publish']), createEl('button',{className:'btn ghost',onclick:()=>{ alert('Rejected (demo)'); }},['Reject'])]) ])) });
+      page.appendChild(pending);
 
-      const user = auth.currentUser; if(!user){card.appendChild(createEl('div',{className:'small'},['Sign in with an admin account to access.'])); return}
-      const adm = await db.collection('admins').doc(user.uid).get(); if(!adm.exists){card.appendChild(createEl('div',{className:'small'},['You are not an admin. To become an admin, add your user id to the `admins` collection in Firestore.'])); return}
+      const volunteers = createEl('div',{className:'card'}); volunteers.appendChild(createEl('h3',{},['Volunteers'])); DEMO_VOL.forEach(v=>volunteers.appendChild(createEl('div',{className:'list-item'},[createEl('div',{},[v.name||v.uid]), createEl('div',{},[createEl('button',{className:'btn ghost',onclick:()=>alert('Message sent (demo)')},['Message'])])])));
+      page.appendChild(volunteers);
 
-      const controls = document.getElementById('admin-controls');
-      const rp = createEl('div'); rp.appendChild(createEl('h3',{},['Pending Reports'])); const rlist=createEl('div',{id:'pending-list',className:'small'},['Loading...']); rp.appendChild(rlist); controls.appendChild(rp);
-      const vr = await db.collection('reports').where('ward','==','Nyabasi West').where('status','==','pending').orderBy('createdAt','desc').limit(50).get(); rlist.innerHTML=''; vr.forEach(d=>{const o=d.data(); const el=createEl('div'); el.innerHTML=`<strong>${o.title}</strong><div class='small'>${o.category} • ${o.location||''}</div><div style='margin-top:6px'><button data-id='${d.id}' class='publish'>Publish</button> <button data-id='${d.id}' class='reject'>Reject</button></div>`; rlist.appendChild(el)});
-      rlist.querySelectorAll('button.publish').forEach(b=>b.onclick=async ()=>{await db.collection('reports').doc(b.dataset.id).update({status:'published',publishedAt:firebase.firestore.FieldValue.serverTimestamp()}); alert('Published'); navigate('admin')});
-      rlist.querySelectorAll('button.reject').forEach(b=>b.onclick=async ()=>{await db.collection('reports').doc(b.dataset.id).update({status:'rejected'}); alert('Rejected'); navigate('admin')});
+      const donations = createEl('div',{className:'card'}); donations.appendChild(createEl('h3',{},['Donations'])); DEMO_DON.forEach(d=>donations.appendChild(createEl('div',{className:'list-item'},[createEl('div',{},['Ksh '+d.amount]), createEl('div',{},[createEl('div',{className:'badge'},[d.status])])])));
+      page.appendChild(donations);
 
-      const vol = createEl('div'); vol.appendChild(createEl('h3',{},['Volunteers'])); const vbtn=createEl('button',{},['Export CSV']); vbtn.onclick=async ()=>{const snap=await db.collection('volunteers').get(); const rows=['uid,joinedAt']; snap.forEach(d=>{const o=d.data(); rows.push(`${o.uid},${o.joinedAt?o.joinedAt.toDate():''}`)}); const csv=rows.join('
-'); const blob=new Blob([csv],{type:'text/csv'}); const url=URL.createObjectURL(blob); const a=createEl('a',{href:url,download:'volunteers.csv'}); a.click();}; vol.appendChild(vbtn); controls.appendChild(vol);
-
-      const don = createEl('div'); don.appendChild(createEl('h3',{},['Donations (intents)'])); const dlist=createEl('div',{className:'small'}); const dsnap=await db.collection('donations').orderBy('createdAt','desc').limit(50).get(); dlist.innerHTML=''; dsnap.forEach(d=>{const o=d.data(); dlist.appendChild(createEl('div',{},([`Ksh ${o.amount} • ${o.uid||'anonymous'} • ${o.status}`])))}); don.appendChild(dlist); controls.appendChild(don);
-
+      root.appendChild(page);
     });
 
-    const start = location.hash.replace('#','')||'home'; navigate(start);
+    // Initialize
+    const start = location.hash.replace('#','') || 'home'; navigate(start);
 
-    window.ciapAuth = {
-      signIn: async (email,password)=>{await initFirebase(); return auth.signInWithEmailAndPassword(email,password)},
-      signOut: async ()=>{await auth.signOut()},
-      register: async (email,password)=>{await initFirebase(); const u = await auth.createUserWithEmailAndPassword(email,password); await db.collection('profiles').doc(u.user.uid).set({email,role:'member',ward:'Nyabasi West',createdAt:firebase.firestore.FieldValue.serverTimestamp(),privacy:{public:false}}); return u}
-    };
+    // enable keyboard toggle for accessibility
+    burger.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); burger.click(); } });
+
+    // small helper for accent var used in CSS (set from JS to ensure consistency)
+    const style = document.createElement('style'); style.textContent = `:root{--accent:${'#7c3aed'}}`; document.head.appendChild(style);
 
   })();
   </script>
-
 </body>
 </html>
